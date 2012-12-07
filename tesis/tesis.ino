@@ -4,7 +4,7 @@ const int prox_sensor_pin = 3;
 
 float temp;
 int foto;
-int prox;
+float prox;
 boolean flagT = false;
 boolean flagF = false;
 boolean flagP = false;
@@ -16,7 +16,9 @@ void imprimeVariables(){
   Serial.print("Temp: ");  
   Serial.print(temp);
   Serial.print("\nFoto: ");
-  Serial.println(foto);
+  Serial.print(foto);
+  Serial.print("\nprox: ");
+  Serial.println(prox);
 }
 
 void verificaTemp(){
@@ -41,6 +43,7 @@ void loop() {
   temp = (5.0 * temp * 100.0)/1024;
   foto = analogRead(foto_sensor_pin);
   prox = analogRead(prox_sensor_pin);
+  prox = (5.0 * prox * 254.0)/1024;
   
   //Evaluate readings
   
